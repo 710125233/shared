@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(to right bottom, rgb(216, 252, 246), rgb(255, 255, 255), pink);
+      overflow: hidden;
+    }
+
+    .blue-border {
+      margin: 3% 5%;
+      padding: 10px 20px;
+      max-width: 750px;
+      background: #fff;
+      border: 5px solid #3b8ac4;
+    }
+
+    .title {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 23px;
+      font-weight: bold;
+      color: #4483b4;
+    }
+
+    .f11 {
+      font-size: 11px;
+    }
+
+    .f13 {
+      font-size: 13px;
+    }
+
+    .tc {
+      text-align: center;
+    }
+
+    .list {
+      padding-left: 25px;
+      font-size: 27px;
+      color: #4483b4;
+      text-align: left;
+    }
+
+    .list>div {
+      margin: 15px 0;
+    }
+
+    .origin {
+      margin: -5px 15px 0 0;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid #bdbbbe;
+      vertical-align: middle;
+    }
+
+    .line {
+      margin: 8px 0 10px;
+      border-top: 3px dashed #dfdcdf;
+    }
+
+    .footer-title {
+      margin-top: 50px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="blue-border tc">
+      <div class="title">{{title}}</div>
+      <div class="tips f13">{{tips}}</div>
+      <div class="line"></div>
+      <div class="subtitle">{{questions[current].title}}</div>
+      <div class="list">
+        <div v-for="(item,index) in questions[current].list" @click="next(item.link)"><span
+            class="origin"></span>{{item.text}}
+        </div>
+      </div>
+      <div class="footer-title f11">{{footerTitle}}</div>
+      <div class="footer-content f13">{{footerContent}}</div>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        title: 'GET YOUR CHANCE TO WIN A PS4 + FIFA 19 NOW!',
+        tips: 'Answer The Questions Below To Qualify',
+        footerTitle: '| Privacy Policy | Terms & Conditions |',
+        footerContent: 'This site is not a part of Facebook App. or Facebook, Inc. Additionally this website is is no way sponsored, endorsed, administered by, or associated with Fcaebook Inc.',
+        progress: 0,
+        current: 0,
+        questions: [
+          {
+            title: 'How Did You Know This Offer?',
+            list: [
+              {
+                text: 'Instagram',
+                link: ''
+              },
+              {
+                text: 'Snapchat',
+                link: ''
+              },
+              {
+                text: 'Facebook',
+                link: ''
+              },
+              {
+                text: 'Other ',
+                link: ''
+              },
+            ]
+          },
+          {
+            title: 'How Did You Know This Offer?1',
+            list: [
+              {
+                text: '1、Instagram',
+                link: ''
+              },
+              {
+                text: '2、Snapchat',
+                link: ''
+              },
+              {
+                text: '3、Facebook',
+                link: ''
+              },
+              {
+                text: '4、Other ',
+                link: ''
+              },
+            ]
+          },
+          {
+            title: 'How Did You Know This Offer?2',
+            list: [
+              {
+                text: '1、baidu',
+                link: 'https://www.baidu.com/'
+              },
+              {
+                text: '2、xinlang',
+                link: 'https://www.sina.com/'
+              },
+              {
+                text: '3、wangyi',
+                link: 'https://www.163.com/'
+              },
+              {
+                text: '4、qq',
+                link: 'https://www.qq.com/'
+              },
+            ]
+          },
+        ]
+      },
+      methods: {
+        next: function (url) {
+          if (url) {
+            location.href = url
+          } else {
+            this.current = this.current + 1;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
